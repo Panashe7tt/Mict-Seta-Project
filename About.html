@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | RuralConnect</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body { margin:0; font-family:'Segoe UI', sans-serif; background:#0f1115; color:#f5f5f5; scroll-behavior: smooth; }
+header { background: linear-gradient(135deg,#1e90ff,#00c851); padding:3rem 1rem; text-align:center; border-bottom-left-radius:25px; border-bottom-right-radius:25px; }
+header h1 { font-size:2.5rem; color:white; margin-bottom:0.5rem; }
+header p { color: #e0e0e0; font-size:1.2rem; }
+
+nav { display:flex; justify-content:center; gap:1rem; background:#11131a; padding:1rem 0; box-shadow:0 2px 6px rgba(0,0,0,0.5); position:sticky; top:0; z-index:100; }
+nav a { color:#f5f5f5; text-decoration:none; padding:0.6rem 1.2rem; border-radius:10px; font-weight:500; transition:0.3s; }
+nav a:hover { background:#00c851; color:#0f1115; }
+nav a.active { background:#1e90ff; color:white; }
+
+.container { max-width:1100px; margin:3rem auto; padding:0 1rem; display:grid; grid-template-columns:1fr; gap:2rem; }
+
+.card { background:#1a1c24; border-radius:20px; padding:2rem; box-shadow:0 12px 25px rgba(0,0,0,0.6); transition:all 0.4s ease; }
+.card:hover { transform:translateY(-8px); box-shadow:0 16px 35px rgba(0,0,0,0.7); }
+.card h3 { color:#00c851; margin-bottom:1rem; }
+.card p { line-height:1.7; color:#ccc; font-size:1rem; }
+table { width:100%; border-collapse: collapse; margin-top:1rem; }
+th, td { padding:0.8rem; text-align:left; }
+th { color:#00c851; border-bottom:2px solid #00c851; }
+tr:nth-child(even) { background: rgba(255,255,255,0.05); }
+
+.profile-section { display:flex; flex-wrap:wrap; gap:2rem; align-items:center; justify-content:center; text-align:center; }
+.profile-icon { width:150px; height:150px; color:#00c851; margin:auto; }
+.profile-icon svg { width:100%; height:100%; fill:#00c851; }
+.profile-content { flex:1 1 500px; max-width:600px; }
+
+blockquote { border-left:4px solid #00c851; padding-left:1rem; color:#ccc; font-style:italic; background: rgba(0,200,81,0.05); border-radius:8px; margin-top:1rem; }
+
+footer { text-align:center; padding:3rem 1rem; margin-top:3rem; background:#11131a; color:#ccc; border-top:1px solid #00c851; font-size:0.9rem; }
+
+@media(max-width:768px){ .profile-section{ flex-direction:column; } .profile-icon{ width:120px; height:120px; } }
+</style>
+</head>
+<body>
+
+<header>
+<h1>About RuralConnect</h1>
+<p>Empowering rural communities through digital innovation and inclusion</p>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="About.html" class="active">About</a>
+<a href="organisation.html">Employers</a>
+<a href="Profile.html">Learners</a>
+<a href="map.html">Hub Map</a>
+</nav>
+
+<div class="container">
+
+<!-- Mission Section with inline SVG Wi-Fi icon -->
+<div class="card profile-section">
+<div class="profile-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <path d="M256 464c-13.3 0-24-10.7-24-24 0-13.2 10.7-24 24-24s24 10.8 24 24c0 13.3-10.7 24-24 24zm89.6-67.9c-9.3 0-18.6-3.5-25.7-10.6-20.7-20.7-54.3-20.7-75 0-7.1 7.1-16.4 10.6-25.7 10.6s-18.6-3.5-25.7-10.6c-20.7-20.7-20.7-54.3 0-75 7.1-7.1 16.4-10.6 25.7-10.6s18.6 3.5 25.7 10.6c20.7 20.7 54.3 20.7 75 0 7.1-7.1 16.4-10.6 25.7-10.6s18.6 3.5 25.7 10.6c20.7 20.7 20.7 54.3 0 75-7.1 7.1-16.4 10.6-25.7 10.6zM256 128c-88.4 0-160 71.6-160 160 0 22.1 17.9 40 40 40 22.1 0 40-17.9 40-40 0-53 43-96 96-96s96 43 96 96c0 22.1 17.9 40 40 40 22.1 0 40-17.9 40-40 0-88.4-71.6-160-160-160z"/>
+</svg>
+</div>
+<div class="profile-content">
+<h3>Our Mission</h3>
+<p>RuralConnect bridges the digital divide by providing reliable access to technology, mentorship, and digital skills training in underserved rural areas. We aim to empower communities to participate fully in the modern digital economy.</p>
+<blockquote>"Digital inclusion is not a privilege; it is a right for every rural citizen."</blockquote>
+</div>
+</div>
+
+<!-- Journey Section -->
+<div class="card">
+<h3>Our Journey</h3>
+<p>Since inception, RuralConnect has worked tirelessly to identify the unique challenges faced by rural communities, from low bandwidth and lack of devices to limited mentorship opportunities. By collaborating with local stakeholders, tech partners, and community leaders, we've implemented innovative solutions that are both scalable and sustainable.</p>
+</div>
+
+<!-- Core Initiatives -->
+<div class="card">
+<h3>Core Initiatives</h3>
+<table>
+<tr>
+<th>Challenge</th>
+<th>Our Approach</th>
+</tr>
+<tr>
+<td>Low-bandwidth areas</td><td>Develop Offline-first Applications</td>
+</tr>
+<tr>
+<td>Lack of digital skills</td><td>Community Learning Hubs & Training Workshops</td>
+</tr>
+<tr>
+<td>Limited mentorship</td><td>Local Mentorship Networks</td>
+</tr>
+<tr>
+<td>Insufficient devices</td><td>Shared Device Libraries & Hubs</td>
+</tr>
+</table>
+</div>
+
+<!-- Vision Section -->
+<div class="card">
+<h3>Vision Forward</h3>
+<p>We envision a future where every rural resident has the tools, knowledge, and support to thrive in a digital-first world. Through strategic partnerships, innovative programs, and relentless commitment, we aim to make digital opportunity accessible, enjoyable, and transformational.</p>
+</div>
+
+</div>
+
+<footer>
+<p><strong>H4CKT3CH Unlock The Impossbles 2026</strong><br>
+East Cape, South Africa<br>
+Inquiry: info@mafihub.co.za | +27 87 153 2141</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

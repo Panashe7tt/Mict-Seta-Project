@@ -1,0 +1,98 @@
+:root {
+    --primary-blue: #003366;
+    --action-green: #28a745;
+    --light-grey: #f8f9fa;
+    --white: #ffffff;
+    --text-dark: #212529;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    background-color: var(--light-grey);
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+/* Data Saver Mode - Minimalist Look */
+body.low-data {
+    background: white;
+}
+body.low-data img { display: none; }
+
+header {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 4px solid var(--action-green);
+}
+
+nav {
+    display: flex;
+    overflow-x: auto;
+    background: #002244;
+    padding: 10px 0;
+    visibility: top;
+}
+
+nav a {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+nav a.active {
+    border-bottom: 3px solid var(--action-green);
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 15px;
+}
+
+.card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    border-left: 5px solid var(--primary-blue);
+}
+
+.btn-green {
+    background: var(--action-green);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* USSD Simulator Styles */
+#ussd-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+    color: #0f0;
+    padding: 20px;
+    width: 280px;
+    font-family: monospace;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+footer {
+    background: #f1f1f1;
+    padding: 30px;
+    text-align: center;
+    font-size: 0.8rem;
+    border-top: 1px solid #ddd;
+}

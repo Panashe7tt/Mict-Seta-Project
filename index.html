@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RuralConnect | Digital Hub</title>
+
+<style>
+
+/* 🔥 Animated background */
+body {
+  margin:0;
+  font-family:'Segoe UI', sans-serif;
+  color:#f5f5f5;
+  background: linear-gradient(-45deg, #0f1115, #1a1f2b, #0a192f, #001f1f);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+/* 🌟 Header */
+header {
+  text-align:center;
+  padding:4rem 1rem;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border-bottom-left-radius:40px;
+  border-bottom-right-radius:40px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.6);
+}
+
+header h1 {
+  font-size:3rem;
+  margin-bottom:0.5rem;
+  background: linear-gradient(90deg,#00c851,#1e90ff,#00ffcc);
+
+  -webkit-background-clip: text; /* Chrome/Safari */
+  background-clip: text;         /* Standard */
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;            /* fallback */
+}
+
+header p {
+  font-size:1.2rem;
+  opacity:0.85;
+}
+
+header .btn-green {
+  margin-top:1.5rem;
+  padding:0.8rem 1.6rem;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:bold;
+  color:#0f1115;
+  background: linear-gradient(135deg,#00ff88,#00c851);
+  box-shadow:0 0 20px rgba(0,255,136,0.6);
+  transition:0.3s;
+}
+
+header .btn-green:hover {
+  transform: scale(1.1);
+  box-shadow:0 0 30px rgba(0,255,136,1);
+}
+
+/* 🧭 Nav */
+nav {
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  background: rgba(17,19,26,0.7);
+  backdrop-filter: blur(15px);
+  padding:0.8rem 0;
+  position:sticky;
+  top:0;
+}
+
+nav a {
+  color:#f5f5f5;
+  text-decoration:none;
+  padding:0.5rem 1rem;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+nav a:hover {
+  background:#00ff88;
+  color:#000;
+}
+
+nav a.active {
+  background:#1e90ff;
+  box-shadow:0 0 15px rgba(30,144,255,0.8);
+}
+
+/* 📦 Container */
+.container {
+  max-width:1000px;
+  margin:3rem auto;
+  padding:0 1rem;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem;
+}
+
+/* 💎 Cards */
+.card {
+  position:relative;
+  padding:2rem;
+  border-radius:20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  box-shadow:0 10px 40px rgba(0,0,0,0.6);
+  transition:0.4s;
+  overflow:hidden;
+}
+
+/* Neon border / mask fix */
+.card::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:20px;
+  padding:1px;
+  background: linear-gradient(135deg,#00ffcc,#1e90ff,#00c851);
+
+  /* Vendor + standard properties for compatibility */
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude; 
+}
+
+/* Hover effect */
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow:0 20px 60px rgba(0,0,0,0.9);
+}
+
+/* Floating animation */
+.card:nth-child(1) {
+  animation: float 6s ease-in-out infinite;
+}
+.card:nth-child(2) {
+  animation: float 6s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Text */
+.card h2, .card h3 {
+  color:#00ffcc;
+  margin-bottom:0.5rem;
+}
+
+.card p {
+  color:#ddd;
+}
+
+/* Footer */
+footer {
+  text-align:center;
+  padding:2rem 1rem;
+  margin-top:3rem;
+  background:#11131a;
+  border-top:1px solid #00c851;
+}
+
+/* Mobile */
+@media(max-width:768px){
+  header h1{ font-size:2.2rem; }
+  nav{ flex-direction:column; }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>RuralConnect Hub</h1>
+<p>Official Digital Inclusion Portal</p>
+<button onclick="toggleDataSaver()" class="btn-green">Toggle Data Saver</button>
+</header>
+
+<nav>
+<a href="index.html" class="active">Home</a>
+<a href="About.html">About</a>
+<a href="organisation.html">Employers</a>
+<a href="Profile.html">Learners</a>
+<a href="map.html">Hub Map</a>
+</nav>
+
+<div class="container">
+
+<div class="card">
+<h2>Welcome to the Digital Frontier</h2>
+<p>In partnership with <strong>MDiHub</strong> and <strong>Propella</strong>, we are solving Rural Digital Access. Even with zero data, you can stay connected.</p>
+</div>
+
+<div class="card">
+<h3>Current Stats: 2026</h3>
+<p><strong>Active Learners:</strong> 1,240</p>
+<p><strong>Hubs Online:</strong> 12 (Mafikeng, Gqeberha, etc.)</p>
+</div>
+
+</div>
+
+<footer>
+<p>&copy; 2026 RuralConnect. All rights reserved.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

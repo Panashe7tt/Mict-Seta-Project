@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile | RuralConnect</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body { margin:0; font-family:'Segoe UI', sans-serif; background:#0f1115; color:#f5f5f5; }
+nav { display:flex; justify-content:center; gap:1rem; background:#11131a; padding:0.8rem 0; box-shadow:0 2px 6px rgba(0,0,0,0.5); position:sticky; top:0; z-index:100; }
+nav a { color:#f5f5f5; text-decoration:none; padding:0.5rem 1rem; border-radius:8px; font-weight:500; transition:0.3s; }
+nav a:hover { background:#00c851; color:#0f1115; }
+nav a.active { background:#1e90ff; color:white; }
+
+.container { max-width:900px; margin:2rem auto; padding:0 1rem; }
+.profile-header { display:flex; gap:1rem; background:#1a1c24; padding:1.5rem; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.4); align-items:center; }
+.profile-header img { width:120px; height:120px; border-radius:50%; object-fit:cover; border:3px solid #00c851; cursor:pointer; transition:0.3s; }
+.profile-header img:hover { transform:scale(1.05); }
+.profile-info h2 { color:#00c851; margin-bottom:0.3rem; }
+.profile-info p { color:#ccc; margin-bottom:0.5rem; }
+.skills span { display:inline-block; background:#1e90ff; color:white; padding:0.3rem 0.6rem; margin:0.2rem; border-radius:8px; font-size:0.85rem; }
+
+form { margin-top:2rem; display:flex; flex-direction:column; gap:1rem; background:#1a1c24; padding:1.5rem; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.4); }
+form input, form textarea { padding:0.6rem; border-radius:10px; border:none; background:#222; color:#f5f5f5; }
+form input[type="file"] { padding:0.3rem; }
+form button { padding:0.6rem; border:none; border-radius:10px; background: linear-gradient(135deg,#1e90ff,#00c851); color:white; font-weight:500; cursor:pointer; transition:0.3s; }
+form button:hover { transform:scale(1.05); }
+
+footer { text-align:center; padding:2rem 1rem; margin-top:2rem; background:#11131a; color:#ccc; border-top:1px solid #00c851; }
+
+</style>
+</head>
+<body>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="About.html">About</a>
+<a href="organisation.html">Employers</a>
+<a href="Profile.html" class="active">Learners</a>
+<a href="map.html">Hub Map</a>
+</nav>
+
+<div class="container">
+  <div class="profile-header">
+    <img src=".vscode/images/default-avatar-icon-of-social-media-user-vector.jpg" alt="Profile Picture" id="profilePic" onclick="changePicture()">
+    <div class="profile-info">
+      <h2 id="welcomeName">Welcome, Learner!</h2>
+      <p id="status">Status: Looking for Opportunities</p>
+      <div class="skills" id="skillsList"></div>
+    </div>
+  </div>
+
+  <h2>Update Your Profile</h2>
+  <form id="profileForm">
+    <input type="text" id="firstName" placeholder="First Name" required>
+    <input type="text" id="lastName" placeholder="Last Name" required>
+    <textarea id="workExp" placeholder="Work Experience / Summary" rows="4" required></textarea>
+    <input type="text" id="jobStatus" placeholder="Job Status" required>
+    <input type="text" id="skillsInput" placeholder="Skills (comma separated)" required>
+    <input type="file" id="cvUpload" accept=".pdf,.doc,.docx">
+    <button type="submit">Update Profile</button>
+  </form>
+</div>
+
+<script>
+const skillsList = document.getElementById('skillsList');
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('profileForm');
+  const firstName = document.getElementById('firstName');
+  const lastName = document.getElementById('lastName');
+  const workExp = document.getElementById('workExp');
+  const jobStatus = document.getElementById('jobStatus');
+  const skillsInput = document.getElementById('skillsInput');
+  const cvUpload = document.getElementById('cvUpload');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (!firstName.value.trim() || !lastName.value.trim() || !workExp.value.trim() || !jobStatus.value.trim() || !skillsInput.value.trim()) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    // Update welcome
+    document.getElementById('welcomeName').innerText = `Welcome, ${firstName.value.trim()} ${lastName.value.trim()}`;
+    document.getElementById('status').innerText = 'Status: ' + jobStatus.value.trim();
+
+    // Update skills
+    const skills = skillsInput.value.split(',').map(s => s.trim()).filter(Boolean);
+    skillsList.innerHTML = '';
+    skills.forEach(skill => {
+      const span = document.createElement('span');
+      span.innerText = skill;
+      skillsList.appendChild(span);
+    });
+
+    // Handle CV file
+    if (cvUpload.files.length > 0) {
+      const file = cvUpload.files[0];
+      alert(`CV uploaded: ${file.name}`);
+      // In production, upload to server or cloud
+    }
+
+    alert('Profile updated successfully!');
+  });
+});
+
+// Profile picture upload
+function changePicture(){
+    const fileInput = document.createElement('input');
+    fileInput.type='file';
+    fileInput.accept='image/*';
+    fileInput.onchange = e => {
+        const reader = new FileReader();
+        reader.onload = ()=> {
+            document.getElementById('profilePic').src = reader.result;
+            localStorage.setItem('learnerProfilePic', reader.result);
+        };
+        reader.readAsDataURL(e.target.files[0]);
+    };
+    fileInput.click();
+}
+
+// restore uploaded picture from localStorage on page load
+window.addEventListener('DOMContentLoaded', () => {
+    const savedImage = localStorage.getItem('learnerProfilePic');
+    if (savedImage) {
+        document.getElementById('profilePic').src = savedImage;
+    }
+});
+</script>
+
+<footer>
+<p><strong>H4CKT3CH Unlock The Impossbles 2026</strong><br>
+East cape<br>
+Inquiry: info@mafihub.co.za | +27 87 153 2141</p>
+</footer>
+
+</body>
+</html>

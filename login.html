@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RuralConnect Login</title>
+<link rel="stylesheet" href="style.css">
+<style>
+    /* Full-page background */
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        background: url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        transition: background 0.5s, color 0.5s;
+    }
+
+    /* Overlay */
+    body::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7));
+        top: 0;
+        left: 0;
+        z-index: 0;
+        transition: background 0.5s;
+    }
+
+    .login-card {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 2.5rem 2rem;
+        border-radius: 15px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        width: 350px;
+        text-align: center;
+        backdrop-filter: blur(6px);
+        animation: fadeIn 0.8s ease-out;
+        transition: background 0.5s, color 0.5s;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(-20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    .login-card h2 {
+        margin-bottom: 1.5rem;
+        color: #1e90ff;
+    }
+
+    .login-card input {
+        width: 90%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .login-card input:focus {
+        border-color: #1e90ff;
+        box-shadow: 0 0 8px rgba(30,144,255,0.5);
+    }
+
+    .theme-buttons {
+        margin: 15px 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .theme-buttons button {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+        color: white;
+    }
+
+    .theme-light { background: #1e90ff; }
+    .theme-dark { background: #11131a; }
+    .theme-green { background: #00c851; }
+
+    .theme-buttons button:hover {
+        opacity: 0.8;
+    }
+
+    /* Upload CV styles */
+    .upload-cv {
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    .upload-cv input[type="file"] {
+        display: none;
+    }
+
+    .upload-cv label {
+        display: inline-block;
+        padding: 10px 20px;
+        background: linear-gradient(135deg, #00c851, #1e90ff);
+        color: white;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .upload-cv label:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .login-card button.main-btn {
+        width: 95%;
+        padding: 12px;
+        margin-top: 15px;
+        background: linear-gradient(135deg, #1e90ff, #00c851);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .login-card button.main-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 400px) {
+        .login-card {
+            width: 90%;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="login-card">
+    <h2>RuralConnect Login</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <!-- Theme selection buttons -->
+    <div class="theme-buttons">
+        <button class="theme-light" onclick="setTheme('light')">Light</button>
+        <button class="theme-dark" onclick="setTheme('dark')">Dark</button>
+        <button class="theme-green" onclick="setTheme('green')">Green</button>
+    </div>
+
+    <!-- Upload CV section -->
+    <div class="upload-cv">
+        <input type="file" id="cvUpload">
+        <label for="cvUpload">📄 Upload CV</label>
+    </div>
+
+    <button class="main-btn" onclick="login()">Login</button>
+</div>
+
+<script>
+function login() {
+    // Allow ANY username and password
+    window.location.href = "index.html";
+}
+
+// Theme switching function
+function setTheme(theme) {
+    const card = document.querySelector('.login-card');
+    const body = document.body;
+
+    if(theme === 'light') {
+        body.style.background = "url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed";
+        body.style.color = "#000";
+        card.style.background = "rgba(255,255,255,0.95)";
+        card.style.color = "#000";
+    } else if(theme === 'dark') {
+        body.style.background = "#0f1115";
+        body.style.color = "#f5f5f5";
+        card.style.background = "rgba(26,28,36,0.95)";
+        card.style.color = "#f5f5f5";
+    } else if(theme === 'green') {
+        body.style.background = "#004d26";
+        body.style.color = "#e0f2e9";
+        card.style.background = "rgba(0,200,81,0.95)";
+        card.style.color = "#f5f5f5";
+    }
+}
+</script>
+
+<script src="app.js"></script>
+</body>
+</html>

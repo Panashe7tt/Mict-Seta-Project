@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hub Map | RuralConnect</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body{ margin:0; font-family:'Segoe UI', sans-serif; background:#000000; color:#f5f5f5; }
+nav{ display:flex; justify-content:center; gap:1rem; background:#11131a; padding:0.8rem 0; box-shadow:0 2px 6px rgba(0,0,0,0.5); position:sticky; top:0; z-index:100; }
+nav a{ color:#f5f5f5; text-decoration:none; padding:0.5rem 1rem; border-radius:8px; font-weight:500; transition:0.3s; }
+nav a:hover{ background:#00c851; color:#0f1115; }
+nav a.active{ background:#1e90ff; color:white; }
+header{ background: linear-gradient(135deg,#1e90ff,#00c851); padding:2rem 1rem; text-align:center; border-bottom-left-radius:20px; border-bottom-right-radius:20px; }
+header h1{ color:white; margin-bottom:0.5rem; }
+.container{ max-width:1000px; margin:2rem auto; padding:0 1rem; }
+.map-card{ background:#ffffff; border-radius:15px; padding:1rem; margin-bottom:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,0.15); transition:all 0.3s; }
+.map-card:hover{ transform:translateY(-5px); box-shadow:0 12px 25px rgba(0,0,0,0.2); }
+.map-card h3{ color:#00c851; margin-bottom:0.5rem; }
+iframe{ border-radius:15px; width:100%; height:400px; border:none; }
+footer{ text-align:center; padding:2rem 1rem; margin-top:2rem; background:#11131a; color:#ccc; border-top:1px solid #00c851; }
+</style>
+</head>
+<body>
+
+<header>
+<h1>RuralConnect Hub Map</h1>
+<p>Locate all active community digital hubs</p>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="About.html">About</a>
+<a href="organisation.html">Employers</a>
+<a href="Profile.html">Learners</a>
+<a href="map.html" class="active">Hub Map</a>
+</nav>
+
+<div class="container">
+<div class="map-card">
+<h3>Gqeberha Hub</h3>
+<iframe src="https://www.google.com/maps?q=2696+James+Watt+Cres,+Industrial+Site,+Mafikeng&q=6+Beach+Road,+Port+Elizabeth,+Gqeberha&q=123+Main+Street,+Gqeberha&q=456+Tech+Avenue,+Gqeberha&z=10&output=embed"></iframe>
+</div>
+
+<!-- Add more hubs similarly -->
+  <button id="locateBtn" class="btn" style="margin:0 1rem 1.5rem;">Use my current location</button>
+  <button id="resetBtn" class="btn" style="margin:0 1rem 1.5rem;">Show Mafikeng Hub</button>
+</div>
+
+<script>
+  const locateBtn = document.getElementById('locateBtn');
+  const resetBtn = document.getElementById('resetBtn');
+
+  function updateMap(srcUrl) {
+    // replace first iframe in first map card
+    const iframe = document.querySelector('.map-card iframe');
+    if (!iframe) return;
+    iframe.src = srcUrl;
+  }
+
+  locateBtn.addEventListener('click', () => {
+    if (!navigator.geolocation) {
+      alert('Geolocation is not supported by your browser.');
+      return;
+    }
+    locateBtn.disabled = true;
+    locateBtn.textContent = 'Locating...';
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        const src = `https://www.google.com/maps/embed?center=${lat},${lng}&q=${lat},${lng}&z=15&output=embed`;
+        updateMap(src);
+        alert('Map updated to your current location.');
+        locateBtn.textContent = 'Use my current location';
+        locateBtn.disabled = false;
+      },
+      (err) => {
+        alert('Unable to get location. Please allow location access and try again.');
+        locateBtn.textContent = 'Use my current location';
+        locateBtn.disabled = false;
+      },
+      { timeout: 10000, enableHighAccuracy: true }
+    );
+  });
+
+  resetBtn.addEventListener('click', () => {
+    const defaultSrc = 'https://www.google.com/maps?q=2696+James+Watt+Cres,+Industrial+Site,+Mafikeng&q=6+Beach+Road,+Port+Elizabeth,+Gqeberha&q=123+Main+Street,+Gqeberha&q=456+Tech+Avenue,+Gqeberha&z=10&output=embed';
+    updateMap(defaultSrc);
+    alert('Map reset to all hubs.');
+  });
+</script>
+
+<footer>
+<p><strong>H4CKT3CH Unlock The Impossbles 2026</strong><br>
+East cape<br>
+Inquiry: info@mafihub.co.za | +27 87 153 2141</p>
+</footer>
+
+</body>
+</html>

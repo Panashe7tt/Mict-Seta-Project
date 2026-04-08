@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaderboard | RuralConnect</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body { margin:0; font-family:'Segoe UI', sans-serif; background:#0f1115; color:#f5f5f5; }
+nav { display:flex; justify-content:center; gap:1rem; background:#11131a; padding:0.8rem 0; box-shadow:0 2px 6px rgba(0,0,0,0.5); position:sticky; top:0; z-index:100; }
+nav a { color:#f5f5f5; text-decoration:none; padding:0.5rem 1rem; border-radius:8px; font-weight:500; transition:0.3s; }
+nav a:hover { background:#00c851; color:#0f1115; }
+nav a.active { background:#1e90ff; color:white; }
+.container { max-width:1000px; margin:2rem auto; padding:0 1rem; }
+.card { background:#1a1c24; border-radius:15px; padding:1.5rem; box-shadow:0 8px 20px rgba(0,0,0,0.4); transition: all 0.3s ease; margin-bottom:1rem; }
+.card:hover { transform: translateY(-5px); box-shadow:0 12px 25px rgba(0,0,0,0.6); }
+ol { list-style: none; padding: 0; counter-reset: rank; }
+ol li { counter-increment: rank; padding-left: 2rem; position: relative; }
+ol li::before { content: counter(rank) ". "; position: absolute; left: 0; color: #00c851; font-weight: bold; }
+footer { text-align:center; padding:2rem 1rem; margin-top:2rem; background:#11131a; color:#ccc; border-top:1px solid #00c851; }
+</style>
+</head>
+<body>
+
+<header style="background: linear-gradient(135deg, #1e90ff, #00c851); padding:3rem 1rem; text-align:center; border-bottom-left-radius:20px; border-bottom-right-radius:20px;">
+<h1>RuralConnect Leaderboard</h1>
+<p>Top Innovators and Learners</p>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="About.html">About</a>
+<a href="organisation.html">Employers</a>
+<a href="Profile.html">Learners</a>
+<a href="map.html">Hub Map</a>
+</nav>
+
+<div class="container">
+    <h3>Top Rural Innovators - Eastern Cape</h3>
+    <ol>
+        <li class="card"><strong>Thabo M.</strong> - 1,200 XP (Gqeberha Hub) - Nelson Mandela University</li>
+        <li class="card"><strong>Sarah J.</strong> - 1,050 XP (East London Hub) - Walter Sisulu University</li>
+        <li class="card"><strong>Lindiwe K.</strong> - 980 XP (Uitenhage Hub) - Cape Peninsula University of Technology</li>
+        <li class="card"><strong>Amahle T.</strong> - 920 XP (Mthatha Hub) - University of Fort Hare</li>
+        <li class="card"><strong>Sizwe L.</strong> - 850 XP (Gqeberha Hub) - Nelson Mandela University</li>
+    </ol>
+</div>
+
+<footer>
+<p><strong>H4CKT3CH Unlock The Impossbles 2026</strong><br>
+East cape<br>
+Inquiry: info@mafihub.co.za | +27 87 153 2141</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

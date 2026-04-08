@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employers Hiring | RuralConnect</title>
+<link rel="stylesheet" href="style.css">
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+  margin:0;
+  font-family:'Segoe UI', sans-serif;
+  background:#0f1115;
+  color:#f5f5f5;
+}
+
+header {
+  background: linear-gradient(135deg,#1e90ff,#00c851);
+  padding:2.5rem 1rem;
+  text-align:center;
+  border-bottom-left-radius:20px;
+  border-bottom-right-radius:20px;
+}
+
+header h1 { color:white; }
+
+nav {
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  background:#11131a;
+  padding:0.8rem 0;
+  position:sticky;
+  top:0;
+}
+
+nav a {
+  color:#f5f5f5;
+  text-decoration:none;
+  padding:0.5rem 1rem;
+  border-radius:8px;
+}
+
+nav a.active { background:#1e90ff; }
+
+.container {
+  max-width:1000px;
+  margin:2rem auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:1.5rem;
+  padding:0 1rem;
+}
+
+.card {
+  background:#1a1c24;
+  border-radius:15px;
+  padding:1.5rem;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+  transition:0.3s;
+}
+
+.card:hover {
+  transform:translateY(-5px);
+}
+
+.icon {
+  font-size:50px;
+  margin-bottom:1rem;
+}
+
+/* Custom colors per company */
+.nedbank { color:#00a651; }
+.capitec { color:#004aad; }
+.fnb { color:#f58220; }
+.dev { color:#1e90ff; }
+
+.card h3 { color:#00c851; }
+
+.btn {
+  margin-top:1rem;
+  background: linear-gradient(135deg,#1e90ff,#00c851);
+  padding:0.6rem 1.2rem;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  color:white;
+}
+
+.application-modal {
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.85);
+  justify-content:center;
+  align-items:center;
+}
+
+.application-content {
+  background:#1a1c24;
+  padding:2rem;
+  border-radius:15px;
+  text-align:center;
+}
+
+.close-modal {
+  background:#ff3f3f;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Companies Hiring Now</h1>
+<p>Apply directly via WhatsApp</p>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="About.html">About</a>
+<a href="organisation.html" class="active">Employers</a>
+<a href="Profile.html">Learners</a>
+<a href="map.html">Hub Map</a>
+</nav>
+
+<div class="container">
+
+<!-- Nedbank -->
+<div class="card">
+<i class="fas fa-university icon nedbank"></i>
+<h3>Nedbank - Customer Consultant</h3>
+<p>Assist clients with banking services and digital solutions.</p>
+<button class="btn" onclick="openApplication('Nedbank Customer Consultant')">Apply</button>
+</div>
+
+<!-- Capitec -->
+<div class="card">
+<i class="fas fa-building-columns icon capitec"></i>
+<h3>Capitec - Service Consultant</h3>
+<p>Help customers with accounts and everyday banking.</p>
+<button class="btn" onclick="openApplication('Capitec Service Consultant')">Apply</button>
+</div>
+
+<!-- FNB -->
+<div class="card">
+<i class="fas fa-hand-holding-dollar icon fnb"></i>
+<h3>FNB - Sales Advisor</h3>
+<p>Promote financial products and assist customers.</p>
+<button class="btn" onclick="openApplication('FNB Sales Advisor')">Apply</button>
+</div>
+
+<!-- Developer -->
+<div class="card">
+<i class="fas fa-laptop-code icon dev"></i>
+<h3>Software Developer (Remote)</h3>
+<p>Build apps and systems for startups.</p>
+<button class="btn" onclick="openApplication('Software Developer Remote')">Apply</button>
+</div>
+
+</div>
+
+<!-- Modal -->
+<div id="applicationModal" class="application-modal">
+<div class="application-content">
+<h4 id="jobTitle">Apply</h4>
+<p>Click below to apply via WhatsApp</p>
+
+<button class="btn" onclick="applyNow()">Apply via WhatsApp</button>
+<br><br>
+<button class="btn close-modal" onclick="closeApplication()">Cancel</button>
+</div>
+</div>
+
+<script>
+function openApplication(title){
+  document.getElementById('jobTitle').innerText = title;
+  document.getElementById('applicationModal').style.display='flex';
+}
+
+function closeApplication(){
+  document.getElementById('applicationModal').style.display='none';
+}
+
+function applyNow(){
+  let job = document.getElementById('jobTitle').innerText;
+  let url = "https://wa.me/27871532141?text=" +
+    encodeURIComponent("Hi, I would like to apply for: " + job);
+  window.open(url, '_blank');
+}
+</script>
+
+<footer style="text-align:center; padding:1rem; margin-top:2rem;">
+<p><strong>H4CKT3CH Unlock The Impossibles 2026</strong><br>
+Inquiry: info@mafihub.co.za | +27 87 153 2141</p>
+</footer>
+<script src="app.js"></script></body>
+</html>
